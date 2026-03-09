@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Yasemin ❤️</title>
+<style>
+body {
+  background: pink;
+  font-family: Arial, sans-serif;
+  text-align: center;
+  overflow-x: hidden;
+  margin: 0;
+  padding: 20px;
+  position: relative;
+}
+h1 {
+  font-size: 6vw;
+  margin-bottom: 30px;
+}
+button {
+  padding: 20px;
+  font-size: 5vw;
+  border: none;
+  border-radius: 15px;
+  background: red;
+  color: white;
+  cursor: pointer;
+}
+.messageBox {
+  font-size: 5vw;
+  color: white;
+  font-weight: bold;
+  margin-top: 20px;
+  opacity: 0;
+  transition: 0.5s;
+}
+.heart {
+  position: absolute;
+  font-size: 20px;
+  color: red;
+  animation: fly 3s linear forwards;
+}
+@keyframes fly {
+  0% { transform: translateY(0) scale(1); }
+  100% { transform: translateY(-500px) scale(2); opacity: 0; }
+}
+</style>
+</head>
+<body>
+
+<h1>Karımm İçin Küçük Bir Oyun ❤️</h1>
+<button id="startBtn">❤️ TIKLARMISIN HAYATIM ❤️</button>
+
+<div id="messageContainer"></div>
+
+<script>
+const messages = [
+  "Bu küçük oyun dünyanın en güzel annesi olacağına inandıgım birtanecik sevgilim Yasemin içinn...",
+  "Sen hayatıma girdiğinden beri her şey daha güzel.",
+  "Senin gözlerine baktığımda dünyayı unutuyorum ❤️",
+  "Sen benim en güzel tesadüfümsün ❤️",
+  "Yanımda olmasan bile aklımda hep sen varsın ❤️",
+  "Dünyadaki milyonlarca insan içinde kalbim sadece senin için atıyor ❤️",
+  "Bu yüzden çok aşığım sana ❤️",
+  "Sen benim hem huzurum hem de mutluluğumsun ❤️",
+  "MELEĞİMMMM ❤️",
+  "Hayat arkadaşımmmm ❤️",
+  "Aaaa birtane daha varrr ❤️",
+  "ÇOK AŞIĞIM ÇOKKKK ❤️",
+  "MUAHHHHHHHH ❤️",
+  "Daha denilecek çok şey var ama şimdilik bu kadar prensesim ❤️"
+];
+
+const startBtn = document.getElementById("startBtn");
+const messageContainer = document.getElementById("messageContainer");
+
+function createHeart() {
+  const heart = document.createElement("div");
+  heart.className = "heart";
+  heart.style.left = Math.random() * window.innerWidth + "px";
+  heart.style.fontSize = (10 + Math.random() * 30) + "px";
+  heart.innerText = "❤️";
+  document.body.appendChild(heart);
+  setTimeout(() => heart.remove(), 3000);
+}
+
+function showMessages(index = 0) {
+  if (index < messages.length) {
+    const msgDiv = document.createElement("div");
+    msgDiv.className = "messageBox";
+    msgDiv.innerText = messages[index];
+    messageContainer.appendChild(msgDiv);
+    setTimeout(() => msgDiv.style.opacity = 1, 100);
+    setTimeout(() => showMessages(index + 1), 2000);
+  } else {
+    for (let i = 0; i < 30; i++) {
+      setTimeout(createHeart, i * 150);
+    }
+    const finalMsg = document.createElement("div");
+    finalMsg.className = "messageBox";
+    finalMsg.style.fontSize = "8vw";
+    finalMsg.style.fontWeight = "bold";
+    finalMsg.style.color = "white";
+    finalMsg.style.marginTop = "20px";
+    finalMsg.innerText = "Yasemin seni çok seviyorum ❤️";
+    messageContainer.appendChild(finalMsg);
+    setTimeout(() => finalMsg.style.opacity = 1, 2000);
+  }
+}
+
+startBtn.addEventListener("click", () => {
+  showMessages();
+  startBtn.disabled = true;
+  startBtn.style.opacity = 0.5;
+});
+</script>
+
+</body>
+</html>
